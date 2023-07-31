@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+"""Write a script markdown2html.py that takes an argument 2 strings:"""
 import sys
 
 def markdown_file(name, output):
-    """Write a script markdown2html.py that takes an argument 2 strings:"""
+    
     try:
         with open(name, 'r') as file:
             markdown_content = file.read()
