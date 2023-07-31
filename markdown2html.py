@@ -12,7 +12,7 @@ def markdown_file(name, output):
             file.write(markdown_content)
 
     except FileNotFoundError:
-        sys.stderr.write(f"Missing '{name}'\n")
+        sys.stderr.write(f"Missing {name}\n")
         sys.exit(1)
 
 if __name__ == "__main__":
