@@ -10,14 +10,14 @@ def convert_heading(line):
         return html_heading
     else:
         return line
-
 def convert_unordered_list(line):
-    if line.startswith("- "):
+    if line.startswith("- ") and not line.startswith("# "):
         list_item = line.strip("- ").strip()
         html_list_item = f"<li>{list_item}</li>"
         return html_list_item
     else:
         return line
+
 
 def markdown_file(name, output):
     try:
