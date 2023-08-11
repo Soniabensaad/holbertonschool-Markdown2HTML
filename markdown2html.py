@@ -2,14 +2,25 @@
 """Write a script markdown2html.py that takes an argument 2 strings:"""
 import sys
 
+def convert_heading(line):
+    if line.startswith("#"):
+        heading_level = min(line.count("#"), 6)
+        heading_text = line.strip("# ").strip()
+        html_heading = f"<h{heading_level}>{heading_text}</h{heading_level}>"
+        return html_heading
+    else:
+        return line
+
 def markdown_file(name, output):
-    
     try:
         with open(name, 'r') as file:
-            markdown_content = file.read()
+            markdown_lines = file.readlines()
+
+        converted_lines = [convert_heading(line) for line in markdown_lines]
 
         with open(output, 'w') as file:
-            file.write(markdown_content)
+            for line in converted_lines:
+                file.write(line)
 
     except FileNotFoundError:
         sys.stderr.write(f"Missing {name}\n")
