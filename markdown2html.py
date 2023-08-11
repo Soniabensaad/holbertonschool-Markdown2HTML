@@ -11,12 +11,24 @@ def convert_heading(line):
     else:
         return line
 
+def convert_unordered_list(line):
+    if line.startswith("- "):
+        list_item = line.strip("- ").strip()
+        html_list_item = f"<li>{list_item}</li>"
+        return html_list_item
+    else:
+        return line
+
 def markdown_file(name, output):
     try:
         with open(name, 'r') as file:
             markdown_lines = file.readlines()
 
-        converted_lines = [convert_heading(line) for line in markdown_lines]
+        converted_lines = []
+        for line in markdown_lines:
+            converted_line = convert_heading(line)
+            converted_line = convert_unordered_list(converted_line)
+            converted_lines.append(converted_line)
 
         with open(output, 'w') as file:
             for line in converted_lines:
