@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Write a script  that takes an argument 2 strings"""
-
+"""Write a script markdown2html.py that takes an argument 2 strings:"""
 import sys
+
 import markdown
 
 def convert_markdown_to_html(input_file, output_file):
