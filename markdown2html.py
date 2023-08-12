@@ -59,4 +59,4 @@ if __name__ == "__main__":
     output_file = sys.argv[2]
 
     convert_markdown_to_html(input_file, output_file)
-    sys.exit(0)
+    
